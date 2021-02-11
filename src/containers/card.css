@@ -1,0 +1,47 @@
+.card-container {
+  margin: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.card {
+  display: block;
+  height: 300px;
+  width: 200px;
+  margin: 10px;
+  background-color: lightgreen;
+  border: 2px solid black;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+  overflow: hidden;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(0.97);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+}
+
+.card article {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.card article h2 {
+  font-size: 16px;
+  text-align: center;
+}
+
+.card article p {
+  color: #696666;
+  margin-top: 5px;
+  font-size: 14px;
+  text-align: center;
+}

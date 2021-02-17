@@ -1,28 +1,39 @@
-import React, { useState, useEffect } from "react"
+import React, { useEffect } from "react"
+import { connect } from "react-redux"
 
 import SearchComponent from "../components/searchComponent"
 import Card from "./Card"
-
 import Scroll from "../custom/Scroll"
 
-const Search = () => {
+import { setSearchField, requestRobots } from "../actions"
 
-  const [robotList, setRobotList] = useState([])
-  const [searchField, setSearchField] = useState("")
+
+const mapStateToProps = state => {
+  return {
+    searchField: state.searchRobots.searchField,
+    robotList: state.requestRobots.robots,
+    isPending: state.requestRobots.isPending,
+    error: state.requestRobots.error
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
+    onRequestRobots: () => dispatch(requestRobots())
+  }
+}
+
+
+const Search = (props) => {
+  const { searchField, onSearchChange, onRequestRobots, robotList } = props
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then(res => res.json())
-      .then(robots => setRobotList(robots))
-  })
-
-  const searchChange = (e) => {
-    e.preventDefault()
-    setSearchField(e.target.value)
-  }
+    onRequestRobots()
+  }, [onRequestRobots])
 
   const filteredRobots = robotList.filter(robot => (
-    robot.name.toLowerCase().includes(searchField.toLocaleLowerCase())
+    robot.name.toLowerCase().includes(searchField.toLowerCase())
   ))
 
   const display = (!robotList.length) ?
@@ -30,7 +41,7 @@ const Search = () => {
     (
       <div>
       <SearchComponent
-        searchChange={searchChange}
+        searchChange={onSearchChange}
       />
       <Scroll>
         <Card robots={filteredRobots} />
@@ -45,4 +56,4 @@ const Search = () => {
   )
 }
 
-export default Search
+export default connect(mapStateToProps, mapDispatchToProps)(Search)

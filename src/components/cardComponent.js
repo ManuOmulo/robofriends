@@ -6,7 +6,7 @@ const CardList  = (props) => {
 
   return (
     <div className="card">
-      <img src={`https://robohash.org/${id}?200x200`} alt="robots" />
+      <img src={`https://robohash.org/${id}?size=200x200`} alt="robots" />
       <article>
         <h2>{name}</h2>
         <p>{email}</p>

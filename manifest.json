@@ -1,6 +1,7 @@
 {
   "short_name": "Robofriends",
-  "name": "Where robots go to meet friends",
+  "name": "Robofriends",
+  "description": "Where robots go to meet friends",
   "icons": [
     {
       "src": "favicon.ico",
@@ -21,7 +22,7 @@
     }
   ],
   "start_url": ".",
-  "display": "standalone",
+  "display": "fullscreen",
   "theme_color": "#000000",
   "background_color": "#ffffff"
 }

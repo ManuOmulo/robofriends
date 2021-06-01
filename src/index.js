@@ -7,6 +7,8 @@ import { createLogger } from "redux-logger"
 import thunkMiddleware from "redux-thunk"
 import rootReducer from "./reducers/rootReducer"
 
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+
 import "./index.css"
 import App from './App';
 
@@ -21,4 +23,9 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://cra.link/PWA
+serviceWorkerRegistration.register();
 

@@ -5,13 +5,12 @@ import Search from "./containers/Search"
 import Card from "./containers/Card"
 import ErrorBoundary from "./custom/ErrorBondary";
 import Scroll from "./custom/Scroll"
+import Header from "./components/Header";
 
 const App = () => {
   return(
     <div>
-      <div className="head-container">
-        <h1>RoboFriends</h1>
-      </div>
+      <Header />
       <ErrorBoundary>
         <Search />
         <Scroll>
